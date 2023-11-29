@@ -2,6 +2,12 @@
   "name": "VisionProExample",
   "version": "0.0.1",
   "private": true,
+  "description": "This project is Apple Vision OS example",
+  "author": {
+    "name": "Çağlar YILDIRIM",
+    "email": "cglryldrm.09@gmail.com",
+    "url": "https://github.com/caglar09"
+  },
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",

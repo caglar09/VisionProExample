@@ -1,0 +1,22 @@
+diff --git a/node_modules/@react-native/community-cli-plugin/dist/utils/metroPlatformResolver.js b/node_modules/@react-native/community-cli-plugin/dist/utils/metroPlatformResolver.js
+index 5cd205a..fa8a320 100644
+--- a/node_modules/@react-native/community-cli-plugin/dist/utils/metroPlatformResolver.js
++++ b/node_modules/@react-native/community-cli-plugin/dist/utils/metroPlatformResolver.js
+@@ -31,13 +31,14 @@ exports.reactNativePlatformResolver = reactNativePlatformResolver;
+  */
+ function reactNativePlatformResolver(platformImplementations) {
+   return (context, moduleName, platform) => {
++    let platformOrVariant = context.customResolverOptions.variant || platform;
+     let modifiedModuleName = moduleName;
+-    if (platform != null && platformImplementations[platform]) {
++    if (platformOrVariant != null && platformImplementations[platformOrVariant]) {
+       if (moduleName === "react-native") {
+-        modifiedModuleName = platformImplementations[platform];
++        modifiedModuleName = platformImplementations[platformOrVariant];
+       } else if (moduleName.startsWith("react-native/")) {
+         modifiedModuleName = `${
+-          platformImplementations[platform]
++          platformImplementations[platformOrVariant]
+         }/${modifiedModuleName.slice("react-native/".length)}`;
+       }
+     }
